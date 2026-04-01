@@ -2,7 +2,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.davemorrissey.labs.subscaleview.test"
     android:hardwareAccelerated="true">
 
     <uses-permission
@@ -22,7 +21,9 @@
         android:theme="@style/sampleTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".BasicFeaturesActivity">
+        <activity
+            android:name=".BasicFeaturesActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
