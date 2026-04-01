@@ -18,6 +18,7 @@ android {
 
     defaultConfig {
         minSdk = 24
+        targetSdk = 35
         applicationId = "com.davemorrissey.labs.subscaleview.test"
         versionCode = 4
         versionName = "3.1.0"
@@ -25,8 +26,8 @@ android {
 
     sourceSets {
         getByName("main") {
-            assets.setSrcDirs(listOf("assets"))
-            java.setSrcDirs(listOf("src/main/kotlin"))
+            assets.srcDirs("assets")
+            java.srcDirs("src/main/kotlin")
         }
     }
     namespace = "com.davemorrissey.labs.subscaleview.test"
