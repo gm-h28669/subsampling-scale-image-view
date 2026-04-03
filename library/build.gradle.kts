@@ -59,20 +59,17 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "org.fossify"
                 artifactId = "subsampling-scale-image-view"
-                version = "3.2.0"
+                version = "3.3.0-local"
             }
             create<MavenPublication>("debug") {
                 from(components["debug"])
                 groupId = "org.fossify"
                 artifactId = "subsampling-scale-image-view-debug"
-                version = "3.2.0"
+                version = "3.3.0-local"
             }
         }
         repositories {
-            maven {
-                name = "local"
-                url = uri(layout.buildDirectory.dir("localMaven"))
-            }
+            mavenLocal()
         }
     }
 }
