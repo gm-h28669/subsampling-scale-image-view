@@ -658,18 +658,22 @@ open class SubsamplingScaleImageView @JvmOverloads constructor(context: Context,
         }
         else {
             // if option "Allow 1:1 zooming in with two double taps" is not set then increase
-            // zoom level in 20% steps from zoomed out ro 1:1 zoom and once 1:1 zoom is reached
-            // start decreasing zoom level in 20% steps until image is again fully zoomed out
+            // zoom level in 25% steps from zoomed out to 1:1 zoom and once 1:1 zoom is reached
+            // set zoom level back to fully zoomed out
             if (scale >= doubleTapZoomScale) {
                 steppedZoomIn = false
             } else if (scale <= fullScale) {
                 steppedZoomIn = true
             }
-            val zoomDirection: Float = if (steppedZoomIn) 1f else -1f
-            val zoomRange = (doubleTapZoomScale - fullScale) * zoomDirection
-            val zoomScaleStep = zoomRange * ZOOM_STEP_IN_PERCENT
-            val nextZoomScale = scale + zoomScaleStep
-            val targetScale = nextZoomScale.coerceIn(fullScale, doubleTapZoomScale)
+            val targetScale = if (steppedZoomIn) {
+                val zoomRange = (doubleTapZoomScale - fullScale)
+                val zoomScaleStep = zoomRange * ZOOM_STEP_IN_PERCENT
+                val nextZoomScale = scale + zoomScaleStep
+                nextZoomScale.coerceIn(fullScale, doubleTapZoomScale)
+            }
+            else {
+                fullScale
+            }
             AnimationBuilder(sCenter!!, targetScale).start()
         }
 
