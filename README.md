@@ -7,9 +7,25 @@ A custom image view for Android, designed for photo galleries and displaying hug
 
 The view optionally uses subsampling and tiles to support very large images - a low resolution base layer is loaded and as you zoom in, it is overlaid with smaller high resolution tiles for the visible area. This avoids holding too much data in memory. It's ideal for displaying large images while allowing you to zoom in to the high resolution details. You can disable tiling for smaller images and when displaying a bitmap object. There are some advantages and disadvantages to disabling tiling so to decide which is best, see [the wiki](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/02.-Displaying-images).
 
+## 🚀 What's New in v3.3.0
+
+### Features & UI Improvements
+* **Enhanced Scaling & Zoom Logic:**
+    * **Image Scaling:** Updated viewport logic to fit landscape images to screen width (allowing minor cropping) and portrait images to screen height.
+    * **Double-Tap Zoom:** On each double tap, the zoom level increases in 25% steps until 1:1 scale is reached. Once at 1:1, the next double tap resets to fully zoomed out.
+
+### Project Maintenance & Build System
+* **Modernized Build Setup:**
+    * Updated to the latest version of Gradle.
+    * Migrated build scripts to Kotlin.
+    * Removed obsolete plugins and settings from `gradle.properties` to eliminate build warnings.
+* **New Publishing Identity:**
+    * Changed the library's `groupId` to `com.github.gm-h28669` to prevent naming conflicts and support JitPack publishing.
+    * Formally bumped the library version to `3.3.0`.
+
+
 #### Guides
 
-* [Releases & downloads](https://github.com/davemorrissey/subsampling-scale-image-view/releases)
 * [Installation and setup](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/01.-Setup)
 * [Image display notes & limitations](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/02.-Displaying-images)
 * [Using preview images](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/03.-Preview-images)
