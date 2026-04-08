@@ -16,3 +16,6 @@ captures/
 
 # Misc
 .DS_Store
+
+# Gradle daemon properties
+gradle/gradle-daemon-jvm.properties
