@@ -57,15 +57,15 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "org.fossify"
+                groupId = "com.github.gm-h28669"
                 artifactId = "subsampling-scale-image-view"
-                version = "3.3.0-local"
+                version = "3.3.0"
             }
             create<MavenPublication>("debug") {
                 from(components["debug"])
-                groupId = "org.fossify"
+                groupId = "com.github.gm-h28669"
                 artifactId = "subsampling-scale-image-view-debug"
-                version = "3.3.0-local"
+                version = "3.3.0"
             }
         }
         repositories {
