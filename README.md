@@ -98,10 +98,16 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
 
 ## Quick start
 
-**1)** Add this library as a dependency in your app's build.gradle file.
+**1)** Add the JitPack repository to your build file.
+
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+
+**2)** Add this library as a dependency in your app's build.gradle file.
 
     dependencies {
-        implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+        implementation 'com.github.gm-h28669:subsampling-scale-image-view:3.3.0'
     }
 
 **2)** Add the view to your layout XML.
