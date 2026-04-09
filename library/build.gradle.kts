@@ -59,13 +59,13 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.gm-h28669"
                 artifactId = "subsampling-scale-image-view"
-                version = "3.3.0"
+                version = "1.0.0"
             }
             create<MavenPublication>("debug") {
                 from(components["debug"])
                 groupId = "com.github.gm-h28669"
                 artifactId = "subsampling-scale-image-view-debug"
-                version = "3.3.0"
+                version = "1.0.0"
             }
         }
         repositories {

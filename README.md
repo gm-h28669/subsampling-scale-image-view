@@ -1,27 +1,31 @@
-Subsampling Scale Image View
-===========================
+# Subsampling Scale Image View #
 
-[![Build Status](https://travis-ci.org/davemorrissey/subsampling-scale-image-view.svg?branch=master)](https://travis-ci.org/davemorrissey/subsampling-scale-image-view)
+*This library is forked from [Fossify SubsamplingScaleImageView](https://github.com/FossifyOrg/subsampling-scale-image-view) project, specifically 
+adapted for use with my version of [Fossify Gallery](https://github.com/gm-h28669/Gallery).*
+* *See [What's New in Release 1.0.0](#whats-new-in-release-100) for a list of functional and build related changes.*
+* *See [Quickstart](#quick-start) for instructions on how to add the library to your project*
 
 A custom image view for Android, designed for photo galleries and displaying huge images (e.g. maps and building plans) without `OutOfMemoryError`s. Includes pinch to zoom, panning, rotation and animation support, and allows easy extension so you can add your own overlays and touch event detection.
 
 The view optionally uses subsampling and tiles to support very large images - a low resolution base layer is loaded and as you zoom in, it is overlaid with smaller high resolution tiles for the visible area. This avoids holding too much data in memory. It's ideal for displaying large images while allowing you to zoom in to the high resolution details. You can disable tiling for smaller images and when displaying a bitmap object. There are some advantages and disadvantages to disabling tiling so to decide which is best, see [the wiki](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/02.-Displaying-images).
 
-## 🚀 What's New in 3.3.0
+## What's New in Release 1.0.0 ##
 
-### Features & UI Improvements
-* **Enhanced Scaling & Zoom Logic:**
-    * **Image Scaling:** Updated viewport logic to fit landscape images to screen width (allowing minor cropping) and portrait images to screen height.
-    * **Double-Tap Zoom:** On each double tap, the zoom level increases in 25% steps until 1:1 scale is reached. Once at 1:1, the next double tap resets to fully zoomed out.
+This is a list of changes compared to [Fossify SubsamplingScaleImageView](https://github.com/FossifyOrg/subsampling-scale-image-view) project.
+
+### Features & UI Improvements ###
+#### Enhanced Scaling & Zoom Logic: ####
+* **Full-screen fit:** image stretches to match screen width (landscape) or height (portrait), cropping edges as needed. Aspect ratio is maintained.
+* **Double-Tap Zoom:** On each double tap, the zoom level increases in 25% steps until 1:1 scale is reached. Once at 1:1 scale, the next double tap resets to fully zoomed out.
 
 ### Project Maintenance & Build System
-* **Modernized Build Setup:**
-    * Updated to the latest version of Gradle.
-    * Migrated build scripts to Kotlin.
-    * Removed obsolete plugins and settings from `gradle.properties` to eliminate build warnings.
-* **New Publishing Identity:**
-    * Changed the library's `groupId` to `com.github.gm-h28669` to prevent naming conflicts and support JitPack publishing.
-    * Formally bumped the library version to `3.3.0`.
+#### Modernized Build Setup:   ####
+* Updated to the latest version of Gradle.
+* Migrated build scripts to Kotlin.
+* Removed obsolete plugins and settings from `gradle.properties` to eliminate build warnings.
+#### New Publishing Identity: ####
+* Changed the library's `groupId` to `com.github.gm-h28669` to prevent naming conflicts and support JitPack publishing.
+* Formally set library version to `1.0.0`
 
 
 #### Guides
@@ -34,21 +38,8 @@ The view optionally uses subsampling and tiles to support very large images - a 
 * [Event handling](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/09.-Events)
 * [Animation](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/08.-Animation)
 * [Extension](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/10.-Extension)
-* [Reference (JavaDocs)](http://davemorrissey.github.io/subsampling-scale-image-view/javadoc/)
+* [Reference (Javadocs)](http://davemorrissey.github.io/subsampling-scale-image-view/javadoc/)
 
-#### Migration guides
-
-Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions can be found [in the wiki](https://github.com/davemorrissey/subsampling-scale-image-view/wiki/X.--Migration-guides).
-
-#### Download the sample app
-
-[![Get it on Google Play](docs/images/google_play.png)](https://play.google.com/store/apps/details?id=com.davemorrissey.labs.subscaleview.sample)
-
-[Kotlin Sample App on GitHub](https://github.com/davemorrissey/ssiv-kotlin-sample)
-
-#### Demo
-
-![Demo](docs/images/demo.gif)
 
 ## Features
 
@@ -82,7 +73,7 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
 #### Animation
 
 * Public methods for animating the scale and center
-* Customisable duration and easing
+* Customizable duration and easing
 * Optional uninterruptible animations
 
 #### Overridable event detection
@@ -98,19 +89,35 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
 
 ## Quick start
 
-**1)** Add the JitPack repository to your build file.
+**Step 1.** Add the JitPack repository to your build file.<br>
 
-    repositories {
-        maven { url 'https://jitpack.io' }
+Add it in your settings.gradle.kts at the end of repositories:
+
+    dependencyResolutionManagement {
+      repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+      repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+      }
     }
 
-**2)** Add this library as a dependency in your app's build.gradle file.
+**Step 2.** Add this dependency in your app's build.gradle.kts file.
+
+Release build
 
     dependencies {
-        implementation 'com.github.gm-h28669:subsampling-scale-image-view:3.3.0'
+      implementation("com.github.gm-h28669.subsampling-scale-image-view:subsampling-scale-image-view:1.0.0")
     }
 
-**2)** Add the view to your layout XML.
+Debug build
+
+    dependencies {
+      implementation("com.github.gm-h28669.subsampling-scale-image-view:subsampling-scale-image-view-debug:1.0.0")
+    }
+
+
+
+**Step 3.** Add the view to your layout XML.
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -120,10 +127,9 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
     </LinearLayout>
 
-**3a)** Now, in your fragment or activity, set the image resource, asset name or file path.
+**Step 3a.** Now, in your fragment or activity, set the image resource, asset name or file path.
 
     SubsamplingScaleImageView imageView = (SubsamplingScaleImageView)findViewById(id.imageView);
     imageView.setImage(ImageSource.resource(R.drawable.monkey));
@@ -132,7 +138,7 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
     // ... or ...
     imageView.setImage(ImageSource.uri("/sdcard/DCIM/DSCM00123.JPG"));
 
-**3b)** Or, if you have a `Bitmap` object in memory, load it into the view. This is unsuitable for large images because it bypasses subsampling - you may get an `OutOfMemoryError`.
+**Step 3b.** Or, if you have a `Bitmap` object in memory, load it into the view. This is unsuitable for large images because it bypasses subsampling - you may get an `OutOfMemoryError`.
 
     SubsamplingScaleImageView imageView = (SubsamplingScaleImageView)findViewById(id.imageView);
     imageView.setImage(ImageSource.bitmap(bitmap));
@@ -144,4 +150,4 @@ Versions 3.9.0, 3.8.0 and 3.0.0 contain breaking changes. Migration instructions
 
 ## About
 
-Copyright 2018 David Morrissey, and licensed under the Apache License, Version 2.0. No attribution is necessary but it's very much appreciated. Star this project if you like it!
+Copyright 2018 David Morrissey, and licensed under the Apache License, Version 2.0. No attribution is necessary, but it's very much appreciated. Star this project if you like it!

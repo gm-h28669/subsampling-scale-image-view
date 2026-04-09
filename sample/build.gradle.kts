@@ -20,8 +20,8 @@ android {
         minSdk = 24
         targetSdk = 35
         applicationId = "com.davemorrissey.labs.subscaleview.test"
-        versionCode = 6
-        versionName = "3.3.0"
+        versionCode = 1
+        versionName = "1.0.0"
     }
 
     sourceSets {
